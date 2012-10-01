@@ -20,6 +20,7 @@
 	msched_tasks[id1].task = task1;\
 	}\
 
+/* All tasks initialized to MSCHED_STATE_INIT */
 mschedTask_t msched_tasks[MSCHED_MAX_TASKS];
 unsigned char currentTaskId;
 
@@ -52,6 +53,8 @@ int msched_init(void (*app_task)(void *))
 	/* Other tasks follow */
 	MSCHED_TASK_INIT(2, MSCHED_TASKTYPE_NORM, app_task);
 	//msched_tasks[2] = app_task;
+
+	msched_proc_tasks(NULL);
 
 	return 0;
 }
